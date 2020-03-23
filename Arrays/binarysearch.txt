@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main()
+{
+    int a[100];
+    int n;
+    printf("Enter size\n");
+    scanf("%d",&n);
+    int i;
+    printf("Enter array elements\n");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    printf("Enter element to be searched");
+    int val;
+    scanf("%d",&val);
+    int low=0;
+    int high=n-1;
+    int mid;
+    int pos=-1;
+    while(low<=high)
+    {
+        mid=(low+high)/2;
+        if(a[mid]==val)
+        {
+            pos=mid;
+            break;
+        }
+        else if(a[mid]>val)
+        {
+            high=mid-1;
+        }
+        else
+        {
+            low=mid+1;
+        }
+    
+    }
+    
+    if(pos==-1)
+    {
+        printf("element not found");
+    }
+    else
+    {
+        printf("element found");
+    }
+
+    return 0;
+}

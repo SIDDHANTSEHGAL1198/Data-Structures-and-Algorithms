@@ -1,0 +1,8 @@
+ printf("Enter elements in first 2D array\n");
+    for(i=0;i<row1;i++)
+    {
+        for(j=0;j<col1;j++)
+        {
+            scanf("%d",&mat1[i][j]);
+        }
+    }

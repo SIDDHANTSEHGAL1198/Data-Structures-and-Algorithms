@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    printf("Enter size of the array");
+    scanf("%d",&n);
+    
+    int i,j;
+    int a[100][100];
+    
+    printf("Enter array elements");
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            scanf("%d",&a[i][j]);
+        }
+    }
+    
+    printf("Elements in 2D array\n");
+    for(i=0;i<n;i++)
+    {
+        printf("\n");
+        for(j=0;j<n;j++)
+        {
+            printf("%d",a[i][j]);
+        }
+    }
+    
+    int trans[100][100];
+    
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            trans[i][j]=a[j][i];
+        }
+    }
+    
+    printf("\nTransposed matrix\n");
+    for(i=0;i<n;i++)
+    {
+        printf("\n");
+        for(j=0;j<n;j++)
+        {
+            printf("%d",trans[i][j]);
+        }
+    }
+    return 0;
+}
