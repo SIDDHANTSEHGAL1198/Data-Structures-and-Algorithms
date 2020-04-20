@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <malloc.h>
+int main()
+{
+   struct node 
+   {
+       int data;
+       struct node *next;
+   };
+   struct node *top;
+   top=0;
+   struct node *temp;
+   struct node *newnode;
+   int choice=1;
+   int num=0;
+   
+   while(choice)
+   {
+       printf("Enter data u want to enter\n");
+       scanf("%d",&num);
+       
+       newnode=(struct node*)malloc(sizeof(struct node));
+       newnode->data=num;
+       newnode->next=top;
+       top=newnode;
+       printf("Do u want to continue(0 or 1)\n");
+       scanf("%d",&choice);
+   }
+   
+   //Pop Operation
+   temp=top;
+   if (top==0)
+   {
+       printf("Underflow Condition");
+   }
+   else
+   {
+        printf("Printing the top element of stack=%d\n",top->data);
+        top=temp->next;
+        free(temp);
+   }
+   
+   printf("Printing stack elements after pop operation\n");
+   temp=top;
+   while(temp!=0)
+   {
+       printf("%d ",temp->data);
+       temp=temp->next;
+   }
+ 
+    return 0;
+}
