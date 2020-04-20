@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <malloc.h>
+int main()
+{
+    struct node
+    {
+        int data;
+        struct node *next;
+    };
+    struct node *head;
+    head=0;
+    struct node *newnode,*prevnode;
+    struct node *temp;
+    int choice=1,count=0;
+    
+    while(choice)
+    {
+        newnode=(struct node*)malloc(sizeof(struct node));
+        printf("Enter data\n");
+        scanf("%d",&newnode->data);
+        newnode->next=0;
+        if(head==0)
+        {
+            temp=head=newnode;
+        }
+        else
+        {
+            temp->next=newnode;
+            temp=newnode;
+            
+        }
+        printf("Do you want to continue (0 or 1)\n");
+        scanf("%d",&choice);
+        
+    }
+    
+    printf("Printing the linked list before deletion operation\n");
+    temp=head;
+    while(temp!=0)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+        count++;
+    }
+    
+    
+    
+    printf("\nNo of nodes in linked list are %d",count);
+    
+    temp=head;
+    while(temp->next!=0)
+    {
+        prevnode=temp;
+        temp=temp->next;
+    }
+    prevnode->next=0;
+    free(temp);
+    
+    printf("\nLinked list after deletion from the end\n");
+    temp=head;
+    count=0;
+    while(temp!=0)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+        count++;
+    }
+    
+    printf("\nNo of nodes in linked list after deletion are %d",count);
+
+    return 0;
+}
