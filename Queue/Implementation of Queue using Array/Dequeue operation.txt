@@ -1,0 +1,87 @@
+#include <stdio.h>
+
+int main()
+{
+    int size;
+    printf("Enter size of the queue\n");
+    scanf("%d",&size);
+    
+    int queue[size];
+    int front=-1;
+    int rear=-1;
+    int choice=1;
+    int num=0;
+    
+    //Enqueue operation
+    
+    while(choice)
+    {
+        printf("Enter data u want to insert\n");
+        scanf("%d",&num);
+        if(rear==size-1)
+        {
+            printf("Underflow Condition\n");
+            break;
+        }
+        else if(front==-1 && rear==-1)
+        {
+            front++;
+            rear++;
+            queue[rear]=num;
+        }
+        else
+        {
+            rear++;
+            queue[rear]=num;
+        }
+        printf("Do u want to continue (0 or 1)\n");
+        scanf("%d",&choice);
+    }
+    
+    int i;
+    printf("Printing queue\n");
+    if(front==-1 && rear==-1)
+    {
+        printf("Underflow Condition");
+    }
+    else
+    {
+        for(i=front;i<rear+1;i++)
+        {
+            printf("%d ",queue[i]);
+        }
+    }
+    
+    //Dequeue Operation
+    printf("\nDequeue Operation\n");
+    if(front==-1 && rear==-1)
+    {
+        printf("Underflow Condition");
+    }
+    else if(front==rear)
+    {
+        front=-1;
+        rear=-1;
+    }
+    else
+    {
+        printf("Element to be deleted=%d\n",queue[front]);
+        front++;
+    }
+    
+    
+    printf("Printing queue after Dequeue Operation\n");
+    if(front==-1 && rear==-1)
+    {
+        printf("Underflow Condition");
+    }
+    else
+    {
+        for(i=front;i<rear+1;i++)
+        {
+            printf("%d ",queue[i]);
+        }
+    }
+
+    return 0;
+}
