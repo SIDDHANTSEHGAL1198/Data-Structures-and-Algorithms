@@ -17,8 +17,6 @@ int main()
     int choice=1;
     int num=0;
     
-    //Enqueue Operation
-    
     while(choice)
     {
         printf("Enter the data\n");
