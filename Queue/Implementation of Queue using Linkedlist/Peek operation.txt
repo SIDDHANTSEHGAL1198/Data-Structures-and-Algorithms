@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <malloc.h>
+
+int main()
+{
+    struct node
+    {
+        int data;
+        struct node *next;
+    };
+    struct node *front;
+    struct node *rear;
+    front=0;
+    rear=0;
+    struct node *newnode;
+    struct node *temp;
+    int choice=1;
+    int num=0;
+    
+    //Enqueue Operation
+    
+    while(choice)
+    {
+        printf("Enter the data\n");
+        scanf("%d",&num);
+        newnode=(struct node*)malloc(sizeof(struct node));
+        newnode->data=num;
+        newnode->next=0;
+        
+        if(front==0 && rear==0)
+        {
+            front=rear=newnode;
+        }
+        else
+        {
+            rear->next=newnode;
+            rear=newnode;
+        }
+        printf("Do u want to continue (0 or 1)\n");
+        scanf("%d",&choice);
+    }
+    
+    
+    printf("\nPrinting Queue\n");
+    if(front==0 && rear==0)
+    {
+        printf("Underflow Condition");
+    }
+    else
+    {
+        temp=front;
+        while(temp!=0)
+        {
+            printf("%d ",temp->data);
+            temp=temp->next;
+        }
+    }
+    
+    //Peek Operation
+    printf("\nElement to be peek out=%d",front->data);
+    
+    return 0;
+}
