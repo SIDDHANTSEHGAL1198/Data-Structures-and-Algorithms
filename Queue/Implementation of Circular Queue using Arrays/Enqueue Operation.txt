@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+int main()
+{
+    int size;
+    printf("Enter the size of queue\n");
+    scanf("%d",&size);
+    int queue[size];
+    int front=-1;
+    int rear=-1;
+    int num=0;
+    int choice=1;
+    
+    //Enqueue operation
+    while(choice)
+    {
+        printf("Enter data\n");
+        scanf("%d",&num);
+        
+        if(front==-1 && rear==-1)
+        {
+            front++;
+            rear++;
+            queue[rear]=num;
+        }
+        else if((rear+1)%size==front)
+        {
+            printf("Overflow Condition");
+        }
+        else
+        {
+            rear=(rear+1)%size;
+            queue[rear]=num;
+        }
+        printf("Do u want to continue (0 or 1)\n");
+        scanf("%d",&choice);
+    }
+    
+    int i;
+    i=front;
+    printf("Printing circular queue\n");
+    if(front==-1 && rear==-1)
+    {
+        printf("Underflow Condition");
+    }
+    else
+    {
+        while(i!=rear)
+        {
+            printf("%d ",queue[i]);
+            i=(i+1)%size;
+        }
+        printf("%d",queue[rear]);
+    }
+    
+    
+
+    return 0;
+}
