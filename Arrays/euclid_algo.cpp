@@ -10,7 +10,7 @@ int gcd(int n1,int n2)
         n1=n2;
         n2=d;
     }
-    return n1;
+    return n1; 
 }
 
 int main()
