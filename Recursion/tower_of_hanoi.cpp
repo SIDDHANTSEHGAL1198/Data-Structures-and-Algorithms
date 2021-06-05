@@ -2,7 +2,7 @@
 #include <string.h>
 using namespace std;
 
-void TOH(int n,int a,int b,int c)
+void TOH(int n,char a,char b,char c)
 {
     if(n>0)
     {
@@ -16,7 +16,7 @@ int main()
     cout<<"Enter n"<<endl;
     int n;
     cin>>n;
-    int a,b,c;
+    char a,b,c;
     cout<<"Enter a,b,c"<<endl;
     cin>>a>>b>>c;
     TOH(n,a,b,c);
