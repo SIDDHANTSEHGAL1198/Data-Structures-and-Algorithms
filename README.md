@@ -1,2 +1,2 @@
-# C-Program
-C programs for data structures
+# Data Structures and Algorithm
+C++ programs for data structures
