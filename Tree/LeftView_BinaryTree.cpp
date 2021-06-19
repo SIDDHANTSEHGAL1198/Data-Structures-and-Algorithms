@@ -76,6 +76,7 @@ void LeftView(node *root)
     queue<node*>q;
 
     q.push(root);
+    q.push(NULL);
 
     while (!q.empty())
     {
