@@ -87,6 +87,7 @@ int main()
     cout<<"Enter 2 for PreOrder Traversal"<<endl;
     cout<<"Enter 3 for InOrder Traversal"<<endl;
     cout<<"Enter 4 for PostOrder Traversal"<<endl;
+    cout<<"Enter 5 Top View"<<endl;
     do
     {
         cout<<endl<<"Enter operation of your choice"<<endl;
