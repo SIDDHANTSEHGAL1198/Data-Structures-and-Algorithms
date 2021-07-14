@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cmath>
+#include <map>
+#include <vector>
 using namespace std;
 struct node
 {
@@ -8,30 +11,30 @@ struct node
 };
 struct node *root=NULL;
 
-node *create_BinaryTree()
+struct node *create_bt()
 {
     int num=0;
+    node *newnode=new node();
     cout<<"Enter number of your choice"<<endl;
     cin>>num;
-
 
     if(num==-1)
     {
         return NULL;
     }
 
-    node *treenode=new node();
-    treenode->data=num;
-    treenode->left=NULL;
-    treenode->right=NULL;
+    newnode->data=num;
+    newnode->left=NULL;
+    newnode->right=NULL;
 
-    cout<<"Enter left child for "<<num<<endl;
-    treenode->left=create_BinaryTree();
+    cout<<"Enter left child of "<<num<<endl;
+    newnode->left=create_bt();
 
-    cout<<"Enter right child for "<<num<<endl;
-    treenode->right=create_BinaryTree();
+    cout<<"Enter right child of "<<num<<endl;
+    newnode->right=create_bt();
 
-    return treenode;
+    return newnode;
+
 }
 
 void PreOrder_Traversal(node *root)
@@ -51,7 +54,6 @@ void InOrder_Traversal(node *root)
     {
         return;
     }
-
     InOrder_Traversal(root->left);
     cout<<root->data<<" ";
     InOrder_Traversal(root->right);
@@ -63,87 +65,87 @@ void PostOrder_Traversal(node *root)
     {
         return;
     }
-
-    PreOrder_Traversal(root->left);
-    PreOrder_Traversal(root->right);
+    PostOrder_Traversal(root->left);
+    PostOrder_Traversal(root->right);
     cout<<root->data<<" ";
 }
 
-void mirror_BinaryTree(node *root)
+void GetVerticalOrder(node *root,int hd,map<int,vector<int>>&m)
 {
     if(root==NULL)
     {
         return;
     }
-    else
-    {
-        mirror_BinaryTree(root->left);
-        mirror_BinaryTree(root->right);
 
-        node *temp;
-        temp=root->left;
-        root->left=root->right;
-        root->right=temp;
-        
-    }
+    m[hd].push_back(root->data);
+    GetVerticalOrder(root->left,hd-1,m);
+    GetVerticalOrder(root->right,hd+1,m);
 }
 
 int main()
 {
     int op=0;
-    cout<<"Enter 1 to create Binary Tree"<<endl;
+
+    cout<<"Enter 1 to create a binary tree"<<endl;
     cout<<"Enter 2 for PreOrder Traversal"<<endl;
     cout<<"Enter 3 for InOrder Traversal"<<endl;
-    cout<<"Enter 4 for PostOrder Traversal"<<endl;
-    cout<<"Enter 5 for Mirroring Binary Tree"<<endl;
+    cout<<"Enter 4 for PostOreder Traversal"<<endl;
+    cout<<"Enter 5 for Vertical Order Traversal"<<endl;
 
     do
     {
-        cout<<endl<<"Enter opearation of your choice"<<endl;
+        cout<<endl<<"Enter operation of your choice"<<endl;
         cin>>op;
 
         switch(op)
         {
             case 1:
             {
-                root=create_BinaryTree();
+                root=create_bt();
                 break;
+                cout<<"Binary Tree Created"<<endl;
             }
-
             case 2:
             {
                 cout<<"PreOrder Traversal"<<endl;
                 PreOrder_Traversal(root);
                 break;
             }
-
             case 3:
             {
                 cout<<"InOrder Traversal"<<endl;
                 InOrder_Traversal(root);
                 break;
             }
-
             case 4:
             {
                 cout<<"PostOrder Traversal"<<endl;
                 PostOrder_Traversal(root);
                 break;
             }
-
             case 5:
             {
-                cout<<"Mirroring Binary Tree"<<endl;
-                mirror_BinaryTree(root);
+                cout<<"Vertical Order Traversal"<<endl;
+                map<int,vector<int>>m;
+                int hd=0;
+
+                GetVerticalOrder(root,hd,m);
+
+                map<int,vector<int>>::iterator it;
+                for(it=m.begin();it!=m.end();it++)
+                {
+                    for(int i=0;i<(it->second).size();i++)
+                    {
+                        cout<<(it->second)[i]<<" ";
+                    }
+                    cout<<endl;
+                }
+
                 break;
             }
-
         }
     }while(op!=99);
-    cout<<"Done!!"<<endl;
-
-
-
+    cout<<"Doneee!!!"<<endl;
     return 0;
-    
+
 }
