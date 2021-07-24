@@ -3,6 +3,7 @@ using namespace std;
 struct node
 {
     int data;
+    int _ ;
     struct node *left;
     struct node *right;
     node(int val)
@@ -21,10 +22,10 @@ node *create_BST_frm_SortedArray(int arr[],int start,int end)
         return NULL;
     }
 
-    int mid=(start+end)/2;
+    int mid=(start+end)/2; 
     node *root=new node(arr[mid]);
 
-    root->left=create_BST_frm_SortedArray(arr,start,mid-1);
+    root->left=create_BST_frm_SortedArray(arr,start,mid-1); 
     root->right=create_BST_frm_SortedArray(arr,mid+1,end);
 
     return root;
