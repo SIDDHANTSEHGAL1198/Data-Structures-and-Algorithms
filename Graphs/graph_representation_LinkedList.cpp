@@ -25,7 +25,7 @@ int main()
 
     cout<<"Adjacent List of Graph"<<endl;
 
-    for(i=1;i<n+1;i++)
+    for(i=0;i<n+1;i++)
     {
         cout<<"head->"<<i;
         for(auto x:adjLL[i])
